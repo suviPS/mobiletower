@@ -1,0 +1,79 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/maps_linear_background"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_sattelite"
+            android:onClick="onClickMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Map sattelite" />
+
+
+        <Button
+            android:id="@+id/button_terrain"
+            android:onClick="onClickMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Map terrain" />
+
+        <Button
+            android:id="@+id/button_hybrid"
+            android:onClick="onClickMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Map hybrid" />
+
+
+    </LinearLayout>
+
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="tk.ksfdev.mobiletower.MapsActivity" />
+
+    </LinearLayout>
+
+
+    <at.grabner.circleprogress.CircleProgressView
+        android:id="@+id/circleView"
+        android:layout_gravity="center"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        CircleProgressView:cpv_barWidth="22dp"
+        CircleProgressView:cpv_spinColor="@color/spinner_color"
+
+        CircleProgressView:cpv_innerContourSize="0dp"
+        CircleProgressView:cpv_outerContourSize="0dp"
+        CircleProgressView:cpv_rimColor="@color/colorAccent"
+        CircleProgressView:cpv_rimWidth="22dp"
+        CircleProgressView:cpv_seekMode="false"
+        CircleProgressView:cpv_autoTextSize="true"
+        CircleProgressView:cpv_textColor="@color/colorAccent"/>
+
+
+
+</FrameLayout>
+
+
+
+
+
