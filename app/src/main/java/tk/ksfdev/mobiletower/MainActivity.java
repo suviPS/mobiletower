@@ -1,6 +1,10 @@
 package tk.ksfdev.mobiletower;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,7 +37,21 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new TowerAdapter(this);
         recyclerView.setAdapter(mAdapter);
 
-        refreshData(recyclerView);
+
+        //request permissions
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                //requestPermissions(array of permissions, requestCode)
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
+            } else {
+                //do stuff
+                refreshData(recyclerView);
+            }
+        } else {
+            //do stuff
+            refreshData(recyclerView);
+        }
 
     }
 
@@ -85,7 +103,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    //When users responds
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //do stuff
+                refreshData(recyclerView);
+            } else {
+                //ask again?
+                finish();
+            }
 
+        }
+
+    }
 
 
 

@@ -4,6 +4,8 @@ package tk.ksfdev.mobiletower.data;
  *  Tower model
  */
 
+//TODO add attributes for 4G LTE
+
 public class MobileTower {
 
     public String getConnectionType() {
